@@ -1,0 +1,28 @@
+<DOCTYPE HTML>
+<html>
+    <body onload="startGame()">
+        <script>
+            var guessInput = "";
+            var targetColor = "";
+            var guesses = 0;
+            var isColorMatched = false;
+            var isColorValid = false;
+            var colors = ["Aqua", "Azure", "Black", "DarkTurquoise", "Crimson", "DeepSkyBlue", "DarkRed", "Orange", "Gold", "Green", "HotPink", "MidnightBlue", "Purple"];
+            colors.sort();
+            function startGame() {
+                var targetIndex = Math.floor(Math.random() * colors.length);
+                targetColor = colors[targetIndex];
+                targetColor = targetColor.toLowerCase();
+                alert("The color is " + targetColor);
+                while (!isColorMatched) {
+                    guessInput = prompt("I'm thinking of one of these colors:\n\n" + colors + "\n\nWhat color am I thinking of?");
+                    guessInput = guessInput.toLowerCase();
+                    guesses++;
+                    if(guessInput == targetColor)
+                        isColorMatched = true;
+                }
+            }
+            
+        </script>
+    </body>
+</html>
