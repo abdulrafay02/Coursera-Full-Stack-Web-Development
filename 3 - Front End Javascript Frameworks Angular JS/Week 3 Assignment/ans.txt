@@ -1,0 +1,108 @@
+Copy and paste the code showing the implementation of the getLeaders and the getLeader functions in services.js in the text box below
+
+corpfac.getLeaders = function(){
+                
+                return leadership;
+                
+            };
+
+            corpfac.getLeader = function (index) {
+                
+                return leadership[index];
+            };
+
+return corpfac;
+
+
+Copy and paste the code for the getPromotion function in the text box below:
+
+this.getPromotion = function(index){
+                    return promotions[index];
+                };
+                
+
+Copy and paste the code for the IndexController function in the text box below:
+
+.controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory, corporateFactory){
+            $scope.featuredDish = menuFactory.getDish(0);
+            $scope.promotion = menuFactory.getPromotion(0);
+            $scope.executiveChef = corporateFactory.getLeader(3);
+        }])
+        
+
+Copy and paste the code for the AboutController function in the text box below:
+
+.controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory){
+            $scope.leadership = corporateFactory.getLeaders();
+        }])
+        
+        
+Copy and paste the code from aboutus.html that constructs the information for the corporate leaders, in the text box below:
+
+<ul class="media-list">
+                <li class="media" ng-repeat="leader in leadership">
+                    <div class="media-left media-middle">
+                        <img class="img-thumbnail media-object" ng-src="{{leader.image}}">
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">{{leader.name}}
+                            <small>
+                            {{leader.designation}}
+                            </small>
+                        </h3>
+                        <p>
+                            {{leader.description}}
+                        </p>
+                    </div>
+                </li>
+            </ul>
+            
+            
+Copy and paste the code (the media objects) from home.html that constructs the information for the featured dish, featured promotion and executive chef , in the text box below:
+
+<div class="media">
+                <div class="media-left media-middle">
+                    <a ui-sref="app.dishdetails({id: featuredDish._id})">
+                                <img class="img-thumbnail media-object" ng-src="{{featuredDish.image}}">
+                              </a>
+                </div>
+                <div class="media-body">
+                    <h2 class="media-heading">
+                        {{featuredDish.name}}
+                        <span class="label label-danger">{{featuredDish.label}}</span>
+                        <span class="badge">{{featuredDish.price | currency}}</span>
+                    </h2>
+                    <p>
+                        {{featuredDish.description}}
+                    </p>
+                </div>
+            </div>
+<div class="media">
+                <div class="media-body">
+                    <h2 class="media-heading">
+                        {{promotion.name}}
+                        <span class="label label-danger">{{promotion.label}}</span>
+                        <span class="badge">{{promotion.price | currency}}</span>
+                    </h2>
+                    <p>
+                        {{promotion.description}}
+                    </p>
+                </div>
+                <div class="media-right mmedia-middle">
+                    <img class="media-object img-thumbnail" ng-src="{{promotion.image}}">
+                </div>
+            </div>
+<div class="media">
+                <div class="media-left media-middle">
+                    <img class="img-thumbnail media-object" ng-src="{{executiveChef.image}}">
+                </div>
+                <div class="media-body">
+                    <h2 class="media-heading">
+                        {{executiveChef.name}}
+                        <small>{{executiveChef.designation}}</small>
+                    </h2>
+                    <p>
+                        {{executiveChef.description}}
+                    </p>
+                </div>
+            </div>
